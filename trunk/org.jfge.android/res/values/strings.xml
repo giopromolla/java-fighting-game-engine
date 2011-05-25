@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Android Fighting Game Engine</string>
+    <string name="app_name">org.jfge Android 2.1 - SfVsMk2</string>
+    <string name="app">.EngineApplication</string> 
+	<string name="menu_exit">Exit</string>
+</resources>
