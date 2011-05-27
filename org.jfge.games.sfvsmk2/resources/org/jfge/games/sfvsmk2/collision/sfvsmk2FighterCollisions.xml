@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collisionhandler version="1.0">
+	<collision colState="stand" curState="highPunch" reaction="highHit"></collision>
+	<collision colState="stand" curState="lowPunch" reaction="lowHit"></collision>
+	<collision colState="stand" curState="highKick" reaction="highHit"></collision>
+	<collision colState="stand" curState="lowKick" reaction="lowHit"></collision>
+	<collision colState="stand" curState="uppercut" reaction="toFallDown"></collision>
+	<collision colState="stand" curState="sweeper" reaction="toFallDown"></collision>
+	<collision colState="stand" curState="roundhouse" reaction="toFallDown"></collision>
+</collisionhandler>

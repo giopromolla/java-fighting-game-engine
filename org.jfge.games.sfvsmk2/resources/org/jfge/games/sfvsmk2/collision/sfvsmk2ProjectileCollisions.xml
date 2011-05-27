@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collisionhandler version="1.0">
+	<collision colState="stand" curState="flying" reaction="toFallDown"/>
+	<collision colState="flying" curState="stand" reaction="impact"/>
+</collisionhandler>

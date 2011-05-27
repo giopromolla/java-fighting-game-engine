@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fighter name="Ryu" startState="stand" endState="dead" victoryState="toVictory" portrait="/org/jfge/games/sf2/fighter/ryu/images/fighter_pic_1.png">
+	<state name="stand" ticks="2" loop="true" nextState="stand">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/stand_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/stand_2.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/stand_3.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/stand_4.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/stand_5.png" />
+	</state>
+
+	<state name="walkForward" ticks="2" loop="true" nextState="walkForward" move="moveForward">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/walk_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/walk_2.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/walk_3.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/walk_4.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/walk_5.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/walk_6.png" />
+	</state>
+
+	<state name="walkBackward" ticks="2" loop="true" nextState="walkBackward" move="moveBackward">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/walk_6.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/walk_5.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/walk_4.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/walk_3.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/walk_2.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/walk_1.png" />
+	</state>
+
+	<state name="toJump" loop="false" nextState="jump" move="jump"> 
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/jump_1.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/jump_2.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/jump_3.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/jump_4.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/jump_5.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/jump_6.png"/>
+    </state> 
+    
+    <state name="jump" loop="true" nextState="stand" move="jump">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/jump_7.png"/>
+    </state>
+    
+    <state name="jumpForward" loop="true" nextState="stand" move="jumpForward">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/direction_jump_1.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/direction_jump_2.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/direction_jump_3.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/direction_jump_4.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/direction_jump_5.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/direction_jump_6.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/direction_jump_7.png"/>
+    </state>
+    
+	<state loop="true" name="jumpBackward" nextState="stand" move="jumpBackward">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/direction_jump_7.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/direction_jump_6.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/direction_jump_5.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/direction_jump_4.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/direction_jump_3.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/direction_jump_2.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/direction_jump_1.png"/>
+    </state>
+
+	<state name="hardPunch" ticks="3" loop="false" nextState="stand" damage="15">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/high_punch_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/high_punch_2.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/high_punch_3.png" />
+	</state>
+
+	<state name="midPunch" ticks="2" loop="false" nextState="stand" damage="10">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/high_punch_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/high_punch_2.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/high_punch_3.png" />
+	</state>
+
+	<state name="lowPunch" loop="false" nextState="stand" damage="5">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/low_punch_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/low_punch_2.png" />
+	</state>
+
+	<state name="toHardJumpPunch" loop="false" nextState="hardJumpPunch" move="jump" damage="15">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_punch_1.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_punch_2.png"/>
+    </state>
+    
+    <state name="toMidJumpPunch" loop="false" nextState="midJumpPunch" move="jump" damage="10">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_punch_1.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_punch_2.png"/>
+    </state>
+    
+    <state name="toLowJumpPunch" loop="false" nextState="lowJumpPunch" move="jump" damage="5">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_punch_1.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_punch_2.png"/>
+    </state>
+    
+    <state name="hardJumpPunch" loop="true" nextState="stand" move="jump" damage="15">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_punch_3.png"/>
+    </state>
+    
+    <state name="midJumpPunch" loop="true" nextState="stand" move="jump" damage="10">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_punch_3.png"/>
+    </state>
+    
+    <state name="lowJumpPunch" loop="true" nextState="stand" move="jump" damage="5">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_punch_3.png"/>
+    </state>
+    
+    <state name="toHardFlightPunch" loop="false" nextState="hardFlightPunch" move="jumpForward" damage="15">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_punch_1.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_punch_2.png"/>
+    </state>
+    
+    <state name="toMidFlightPunch" loop="false" nextState="midFlightPunch" move="jumpForward" damage="10">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_punch_1.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_punch_2.png"/>
+    </state>
+    
+    <state name="toLowFlightPunch" loop="false" nextState="lowFlightPunch" move="jumpForward" damage="5">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_punch_1.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_punch_2.png"/>
+    </state>
+    
+    <state name="hardFlightPunch" loop="true" nextState="stand" move="jumpForward" damage="15">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_punch_3.png"/>
+    </state>
+
+	<state name="midFlightPunch" loop="true" nextState="stand" move="jumpForward" damage="10">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_punch_3.png"/>
+    </state>
+    
+    <state name="lowFlightPunch" loop="true" nextState="stand" move="jumpForward" damage="5">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_punch_3.png"/>
+    </state>
+
+	<state name="hardKick" ticks="3" loop="false" nextState="stand" damage="15">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/high_kick_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/high_kick_2.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/high_kick_3.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/high_kick_4.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/high_kick_5.png" />
+	</state>
+
+	<state name="midKick" ticks="2" loop="false" nextState="stand" damage="10">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/high_kick_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/high_kick_2.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/high_kick_3.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/high_kick_4.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/high_kick_5.png" />
+	</state>
+
+	<state name="lowKick" loop="false" nextState="stand" damage="5">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/low_kick_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/low_kick_2.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/low_kick_3.png" />
+	</state>
+
+	<state name="toHardJumpKick" loop="false" nextState="hardJumpKick" move="jump" damage="15">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_kick_1.png"/>
+    </state>
+
+	<state name="toMidJumpKick" loop="false" nextState="midJumpKick" move="jump" damage="10">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_kick_1.png"/>
+    </state>
+    
+    <state name="toLowJumpKick" loop="false" nextState="lowJumpKick" move="jump" damage="5">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_kick_1.png"/>
+    </state>
+
+	<state name="hardJumpKick" loop="true" nextState="stand" move="jump" damage="15">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_kick_2.png"/>
+    </state>
+    
+    <state name="midJumpKick" loop="true" nextState="stand" move="jump" damage="10">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_kick_2.png"/>
+    </state>
+    
+    <state name="lowJumpKick" loop="true" nextState="stand" move="jump" damage="5">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/flight_kick_2.png"/>
+    </state>
+    
+    <state name="toHardFlightKick" loop="false" nextState="hardFlightKick" move="jumpForward" damage="15">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/second_flight_kick_1.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/second_flight_kick_2.png"/>
+    </state>
+
+	<state name="toMidFlightKick" loop="false" nextState="midFlightKick" move="jumpForward" damage="15">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/second_flight_kick_1.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/second_flight_kick_2.png"/>
+    </state>
+    
+    <state name="toLowFlightKick" loop="false" nextState="lowFlightKick" move="jumpForward" damage="5">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/second_flight_kick_1.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/second_flight_kick_2.png"/>
+    </state>
+
+	<state name="hardFlightKick" loop="true" nextState="stand" move="jumpForward" damage="15">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/second_flight_kick_3.png"/>
+    </state>
+
+	<state name="midFlightKick" loop="true" nextState="stand" move="jumpForward" damage="10">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/second_flight_kick_3.png"/>
+    </state>
+    
+    <state name="lowFlightKick" loop="true" nextState="stand" move="jumpForward" damage="5">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/second_flight_kick_3.png"/>
+    </state>
+    
+	<state name="toBlock" loop="true" nextState="block">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/block_1.png" />
+	</state>
+
+	<state name="block" loop="true" nextState="stand">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/block_2.png" />
+	</state>
+
+	 <state name="toDuckBlock" loop="false" nextState="duckBlock">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/duck_block_1.png"/>
+    </state>
+    
+    <state name="duckBlock" loop="true" nextState="duck">
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/duck_block_2.png"/>
+    </state>
+
+	<state name="toDuck" loop="false" nextState="duck">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/duck_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/duck_2.png" />
+	</state>
+
+	<state name="duck" loop="true" nextState="duck">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/duck_3.png" />
+	</state>
+
+	<state name="hardDuckPunch" ticks="3" loop="false" nextState="duck" damage="15">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/duck_punch_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/duck_punch_2.png" />
+	</state>
+
+	<state name="midDuckPunch" ticks="2" loop="false" nextState="duck" damage="10">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/duck_punch_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/duck_punch_2.png" />
+	</state>
+	
+	<state name="lowDuckPunch" loop="false" nextState="duck" damage="5">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/duck_punch_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/duck_punch_2.png" />
+	</state>
+
+	<state name="hardDuckKick" loop="false" nextState="duck" damage="15">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/duck_kick_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/duck_kick_2.png" />
+	</state>
+
+	<state name="midDuckKick" loop="false" nextState="duck" damage="10">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/duck_kick_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/duck_kick_2.png" />
+	</state>
+	
+	<state name="lowDuckKick" loop="false" nextState="duck" damage="5">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/duck_kick_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/duck_kick_2.png" />
+	</state>
+	
+	<state name="duckHit" loop="false" nextState="duck">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/duck_hit_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/duck_hit_2.png" />
+	</state>
+
+	<state name="uppercut" ticks="3" loop="false" nextState="stand" damage="15">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/uppercut_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/uppercut_2.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/uppercut_3.png" />
+	</state>
+
+	<state name="roundhouse" ticks="3" loop="false" nextState="stand" damage="15">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/round_house_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/round_house_2.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/round_house_3.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/round_house_4.png" />
+	</state>
+
+	<state name="sweeper" ticks="3" loop="false" nextState="duck" damage="15">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/sweeper_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/sweeper_2.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/sweeper_3.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/sweeper_4.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/sweeper_5.png" />
+	</state>
+
+	<state name="highHit" ticks="3" loop="false" nextState="stand" effect="HighHitBlood">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/high_hit_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/high_hit_2.png" />
+	</state>
+
+	<state name="lowHit" ticks="5" loop="false" nextState="stand" effect="LowHitBlood">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/low_hit_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/low_hit_2.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/low_hit_3.png" />
+	</state>
+
+	<state name="toFallDown" loop="false" nextState="fallDown" move="jumpBackward" effect="FallDownBlood">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/fall_down_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/fall_down_2.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/fall_down_3.png" />
+	</state>
+
+	<state name="fallDown" loop="true" nextState="layDown" move="jumpBackward">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/fall_down_4.png" />
+	</state>
+
+	<state name="layDown" ticks="5" loop="false" nextState="standUp">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/lay_down_1.png" />
+	</state>
+
+	<state name="standUp" ticks="2" loop="false" nextState="stand">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/get_up_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/get_up_2.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/get_up_3.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/get_up_4.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/get_up_5.png" />
+	</state>
+
+	<state name="hardFirstSpecialAttack" ticks="2" loop="false" nextState="stand" damage="20" move="jump">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/first_special_attack_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/first_special_attack_2.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/first_special_attack_3.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/first_special_attack_4.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/first_special_attack_5.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/first_special_attack_6.png" />
+	</state>
+
+	<state name="midFirstSpecialAttack" ticks="2" loop="false" nextState="stand" damage="15" move="jump">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/first_special_attack_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/first_special_attack_2.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/first_special_attack_3.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/first_special_attack_4.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/first_special_attack_5.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/first_special_attack_6.png" />
+	</state>
+	
+	<state name="lowFirstSpecialAttack" ticks="2" loop="true" nextState="stand" damage="10" move="jump">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/first_special_attack_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/first_special_attack_2.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/first_special_attack_3.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/first_special_attack_4.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/first_special_attack_5.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/first_special_attack_6.png" />
+	</state>
+	
+	<state name="fireball" ticks="2" loop="false" nextState="stand" projectile="hadouken">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/fireball_1.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/fireball_2.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/fireball_3.png" />
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/fireball_4.png" />
+	</state>
+
+	<state loop="true" name="dead" nextState="dead" finalState="true">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/lay_down_1.png" />
+	</state>
+	
+	<state loop="false" name="toVictory" nextState="victory">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/victory_1.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/victory_2.png"/>
+    	<image src="/org/jfge/games/sf2/fighter/ryu/images/victory_3.png"/>
+    </state>
+    
+    <state loop="true" name="victory" nextState="victory">
+		<image src="/org/jfge/games/sf2/fighter/ryu/images/victory_4.png"/>
+    </state>
+
+	<transition state="stand" event="leftPressed" nextState="walkBackward"/>
+    <transition state="stand" event="rightPressed" nextState="walkForward"/>
+    <transition state="stand" event="upPressed" nextState="jump"/>
+    <transition state="stand" event="downPressed" nextState="toDuck"/>
+    <transition state="stand" event="xPressed" nextState="midPunch"/>
+    <transition state="stand" event="aPressed" nextState="midKick"/>
+    <transition state="stand" event="yPressed" nextState="lowPunch"/>
+    <transition state="stand" event="bPressed" nextState="lowKick"/>
+    <transition state="stand" event="lbPressed" nextState="hardPunch"/>
+    <transition state="stand" event="lrPressed" nextState="roundhouse"/>
+    <transition state="stand" direction="right" event="rightPressed" nextState="walkForward"/>
+    <transition state="stand" direction="left" event="rightPressed" nextState="walkBackward"/>
+    <transition state="stand" direction="right" event="leftPressed" nextState="walkBackward"/>
+    <transition state="stand" direction="left" event="leftPressed" nextState="walkForward"/>
+    
+    <transition state="walkBackward" event="rightPressed" nextState="walkForward"/>
+    <transition state="walkBackward" event="upPressed" nextState="jumpBackward"/>
+    <transition state="walkBackward" event="xPressed" nextState="midPunch"/>
+    <transition state="walkBackward" event="aPressed" nextState="midKick"/>
+    <transition state="walkBackward" event="yPressed" nextState="lowPunch"/>
+    <transition state="walkBackward" event="bPressed" nextState="lowKick"/>
+    <transition state="walkBackward" event="lrPressed" nextState="roundhouse"/>
+    <transition state="walkBackward" event="lbPressed" nextState="hardPunch"/>
+    <transition state="walkBackward" event="leftReleased" nextState="stand"/>
+    <transition state="walkBackward" event="rightReleased" nextState="stand"/>
+    
+    <transition state="walkForward" event="leftPressed" nextState="walkBackward"/>
+    <transition state="walkForward" event="upPressed" nextState="jumpForward"/>
+    <transition state="walkForward" event="xPressed" nextState="midPunch"/>
+    <transition state="walkForward" event="aPressed" nextState="midKick"/>
+    <transition state="walkForward" event="yPressed" nextState="lowPunch"/>
+    <transition state="walkForward" event="bPressed" nextState="lowKick"/>
+    <transition state="walkForward" event="lrPressed" nextState="roundhouse"/>
+    <transition state="walkForward" event="lbPressed" nextState="hardPunch"/>
+    <transition state="walkForward" event="rightReleased" nextState="stand"/>
+    <transition state="walkForward" event="leftReleased" nextState="stand"/>
+    
+    <transition state="duck" event="yPressed" nextState="lowDuckPunch"/>
+    <transition state="duck" event="aPressed" nextState="midDuckKick"/>
+    <transition state="duck" event="bPressed" nextState="lowDuckKick"/>
+    <transition state="duck" event="xPressed" nextState="midDuckPunch"/>
+    <transition state="duck" event="lbPressed" nextState="uppercut"/>
+    <transition state="duck" event="lrPressed" nextState="sweeper"/>
+    <transition state="duck" event="downReleased" nextState="stand"/>
+    
+    <transition state="jump" event="yPressed" nextState="toLowJumpPunch"/>
+    <transition state="jump" event="bPressed" nextState="toLowJumpKick"/>
+    <transition state="jump" event="aPressed" nextState="toMidJumpKick"/>
+    <transition state="jump" event="xPressed" nextState="toMidJumpPunch"/>
+    <transition state="jump" event="lrPressed" nextState="toHardJumpKick"/>
+    <transition state="jump" event="lbPressed" nextState="toHardJumpPunch"/>
+    
+    <transition state="jumpForward" event="yPressed" nextState="toLowFlightPunch"/>
+    <transition state="jumpForward" event="bPressed" nextState="toLowFlightKick"/>
+    <transition state="jumpForward" event="xPressed" nextState="toMidFlightPunch"/>
+    <transition state="jumpForward" event="aPressed" nextState="toMidFlightKick"/>
+    <transition state="jumpForward" event="lbPressed" nextState="toHardFlightPunch"/>
+    <transition state="jumpForward" event="lrPressed" nextState="toHardFlightKick"/>
+    
+    <transition state="jumpBackward" event="yPressed" nextState="toLowFlightPunch"/>
+    <transition state="jumpBackward" event="bPressed" nextState="toLowFlightKick"/>
+    <transition state="jumpBackward" event="xPressed" nextState="toMidFlightPunch"/>
+    <transition state="jumpBackward" event="aPressed" nextState="toMidFlightKick"/>
+    <transition state="jumpBackward" event="lbPressed" nextState="toHardFlightPunch"/>
+    <transition state="jumpBackward" event="lrPressed" nextState="toHardFlightKick"/>
+    
+    <transition state="block" event="lrReleased" nextState="stand"/>
+    <transition state="block" event="downPressed" nextState="duckBlock"/>
+    <transition state="duckBlock" event="lrReleased" nextState="duck"/>
+    <transition state="duckBlock" event="downReleased" nextState="block"/>
+    <transition state="sweeper" event="downReleased" nextState="stand"/>
+    
+    <transition state="stand" event="rightPressed, rightReleased, downPressed, downReleased, rightPressed, rightReleased, yPressed" nextState="lowFirstSpecialAttack"/>
+    <transition state="stand" event="rightPressed, rightReleased, downPressed, downReleased, rightPressed, rightReleased, xPressed" nextState="midFirstSpecialAttack"/>
+    <transition state="stand" event="rightPressed, rightReleased, downPressed, downReleased, rightPressed, rightReleased, lbPressed" nextState="hardFirstSpecialAttack"/>
+    
+    <transition state="stand" event="downPressed, downReleased, rightPressed, rightReleased, yPressed" nextState="fireball"/>
+    
+    
+</fighter>

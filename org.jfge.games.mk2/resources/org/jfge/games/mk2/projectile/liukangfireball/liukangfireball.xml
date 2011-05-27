@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectile name="Liu Kang Fireball" startState="create" version="1.0">
+	<state name="create" loop="false" nextState="flying" move="flying" damage="15">
+		<image src="/org/jfge/games/mk2/projectile/liukangfireball/images/create_1.png"/>
+		<image src="/org/jfge/games/mk2/projectile/liukangfireball/images/create_2.png"/>
+	</state>
+	
+	<state name="flying" loop="true" nextState="impact" move="flying" damage="15">
+		<image src="/org/jfge/games/mk2/projectile/liukangfireball/images/flying_2.png"/>
+	</state>
+	
+	<state name="impact" loop="true" nextState="impact" finalState="true"/>
+</projectile>
