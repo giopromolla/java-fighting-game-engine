@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<particle name="Hadouken" startState="flying" version="1.0">
+	<state name="flying" ticks="2" loop="true" nextState="impact" move="flying" damage="15">
+		<image src="/org/jfge/games/sf2/projectile/hadouken/images/flying_1.png"/>
+		<image src="/org/jfge/games/sf2/projectile/hadouken/images/flying_2.png"/>
+	</state>
+	
+	<state name="impact" ticks="2" loop="false" nextState="destroyed" damage="15">
+		<image src="/org/jfge/games/sf2/projectile/hadouken/images/impact_1.png"/>
+		<image src="/org/jfge/games/sf2/projectile/hadouken/images/impact_2.png"/>
+		<image src="/org/jfge/games/sf2/projectile/hadouken/images/impact_3.png"/>
+	</state>
+	
+	<state name="destroyed" loop="true" nextState="destroyed" finalState="true"/>
+</particle>
