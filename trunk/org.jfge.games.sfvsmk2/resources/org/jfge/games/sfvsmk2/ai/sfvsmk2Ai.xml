@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ai version="1.0">
+	<transition dist="near" obsrvState="stand" oppState="highPunch" reaction="block"/>
+</ai>

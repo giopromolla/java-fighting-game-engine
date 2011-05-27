@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collisionhandler version="1.0">
+	
+	<!-- collisions for flying -->
+	<collision colState="flying" curState="stand" reaction="impact"></collision>
+	<collision colState="flying" curState="walkForward" reaction="impact"></collision>
+	<collision colState="flying" curState="walkBackward" reaction="impact"></collision>
+	<collision colState="flying" curState="toJump" reaction="impact"></collision>
+	<collision colState="flying" curState="jump" reaction="impact"></collision>
+	<collision colState="flying" curState="duck" reaction="impact"></collision>
+	<collision colState="flying" curState="jumpForward" reaction="impact"></collision>
+	<collision colState="flying" curState="jumpBackward" reaction="impact"></collision>
+	
+	<collision colState="flying" curState="highPunch" reaction="impact"></collision>
+	<collision colState="flying" curState="lowPunch" reaction="impact"></collision>
+	<collision colState="flying" curState="highKick" reaction="impact"></collision>
+	<collision colState="flying" curState="lowKick" reaction="impact"></collision>
+	<collision colState="flying" curState="uppercut" reaction="impact"></collision>
+	<collision colState="flying" curState="sweeper" reaction="impact"></collision>
+	<collision colState="flying" curState="roundhouse" reaction="impact"></collision>
+	
+	<collision colState="flying" curState="toJumpPunch" reaction="impact"></collision>
+	<collision colState="flying" curState="jumpPunch" reaction="impact"></collision>
+	
+	<collision colState="flying" curState="toFlightPunch" reaction="impact"></collision>
+	<collision colState="flying" curState="flightPunch" reaction="impact"></collision>
+	
+	<collision colState="flying" curState="toJumpKick" reaction="impact"></collision>
+	<collision colState="flying" curState="jumpKick" reaction="impact"></collision>
+	
+	<collision colState="flying" curState="toFlightKick" reaction="impact"></collision>
+	<collision colState="flying" curState="flightKick" reaction="impact"></collision>
+	
+	<collision colState="flying" curState="duckPunch" reaction="impact"></collision>
+	<collision colState="flying" curState="duckKick" reaction="impact"></collision>
+	
+	<collision colState="stand" curState="flying" reaction="toFallDown"></collision>
+	<collision colState="walkForward" curState="flying" reaction="toFallDown"></collision>
+	<collision colState="walkBackward" curState="flying" reaction="toFallDown"></collision>
+	<collision colState="toJump" curState="flying" reaction="toFallDown"></collision>
+	<collision colState="jump" curState="flying" reaction="toFallDown"></collision>
+	<collision colState="duck" curState="flying" reaction="toFallDown"></collision>
+	<collision colState="jumpForward" curState="flying" reaction="toFallDown"></collision>
+	<collision colState="jumpBackward" curState="flying" reaction="toFallDown"></collision>
+	
+	
+	<collision colState="highPunch" curState="flying" reaction="toFallDown"></collision>
+	<collision colState="lowPunch" curState="flying" reaction="toFallDown"></collision>
+	<collision colState="highKick" curState="flying" reaction="toFallDown"></collision>
+	<collision colState="lowKick" curState="flying" reaction="toFallDown"></collision>
+	<collision colState="uppercut" curState="flying" reaction="toFallDown"></collision>
+	<collision colState="sweeper" curState="flying" reaction="toFallDown"></collision>
+	<collision colState="roundhouse" curState="flying" reaction="toFallDown"></collision>
+	
+	<collision colState="toJumpPunch" curState="flying" reaction="toFallDown"></collision>
+	<collision colState="jumpPunch" curState="flying" reaction="toFallDown"></collision>
+	
+	<collision colState="toFlightPunch" curState="flying" reaction="toFallDown"></collision>
+	<collision colState="flightPunch" curState="flying" reaction="toFallDown"></collision>
+	
+	<collision colState="toJumpKick" curState="flying" reaction="toFallDown"></collision>
+	<collision colState="jumpKick" curState="flying" reaction="toFallDown"></collision>
+	
+	<collision colState="toFlightKick" curState="flying" reaction="toFallDown"></collision>
+	<collision colState="flightKick" curState="flying" reaction="toFallDown"></collision>
+	
+	<collision colState="duckPunch" curState="flying" reaction="toFallDown"></collision>
+	<collision colState="duckKick" curState="flying" reaction="toFallDown"></collision>
+	
+	<!-- collisions for create -->
+	<collision colState="create" curState="stand" reaction="impact"></collision>
+	<collision colState="create" curState="walkForward" reaction="impact"></collision>
+	<collision colState="create" curState="walkBackward" reaction="impact"></collision>
+	<collision colState="create" curState="toJump" reaction="impact"></collision>
+	<collision colState="create" curState="jump" reaction="impact"></collision>
+	<collision colState="create" curState="duck" reaction="impact"></collision>
+	<collision colState="create" curState="jumpForward" reaction="impact"></collision>
+	<collision colState="create" curState="jumpBackward" reaction="impact"></collision>
+	
+	<collision colState="create" curState="highPunch" reaction="impact"></collision>
+	<collision colState="create" curState="lowPunch" reaction="impact"></collision>
+	<collision colState="create" curState="highKick" reaction="impact"></collision>
+	<collision colState="create" curState="lowKick" reaction="impact"></collision>
+	<collision colState="create" curState="uppercut" reaction="impact"></collision>
+	<collision colState="create" curState="sweeper" reaction="impact"></collision>
+	<collision colState="create" curState="roundhouse" reaction="impact"></collision>
+	
+	<collision colState="create" curState="toJumpPunch" reaction="impact"></collision>
+	<collision colState="create" curState="jumpPunch" reaction="impact"></collision>
+	
+	<collision colState="create" curState="toFlightPunch" reaction="impact"></collision>
+	<collision colState="create" curState="flightPunch" reaction="impact"></collision>
+	
+	<collision colState="create" curState="toJumpKick" reaction="impact"></collision>
+	<collision colState="create" curState="jumpKick" reaction="impact"></collision>
+	
+	<collision colState="create" curState="toFlightKick" reaction="impact"></collision>
+	<collision colState="create" curState="flightKick" reaction="impact"></collision>
+	
+	<collision colState="create" curState="duckPunch" reaction="impact"></collision>
+	<collision colState="create" curState="duckKick" reaction="impact"></collision>
+	
+	<collision colState="stand" curState="create" reaction="toFallDown"></collision>
+	<collision colState="walkForward" curState="create" reaction="toFallDown"></collision>
+	<collision colState="walkBackward" curState="create" reaction="toFallDown"></collision>
+	<collision colState="toJump" curState="create" reaction="toFallDown"></collision>
+	<collision colState="jump" curState="create" reaction="toFallDown"></collision>
+	<collision colState="duck" curState="create" reaction="toFallDown"></collision>
+	<collision colState="jumpForward" curState="create" reaction="toFallDown"></collision>
+	<collision colState="jumpBackward" curState="create" reaction="toFallDown"></collision>
+	
+	
+	<collision colState="highPunch" curState="create" reaction="toFallDown"></collision>
+	<collision colState="lowPunch" curState="create" reaction="toFallDown"></collision>
+	<collision colState="highKick" curState="create" reaction="toFallDown"></collision>
+	<collision colState="lowKick" curState="create" reaction="toFallDown"></collision>
+	<collision colState="uppercut" curState="create" reaction="toFallDown"></collision>
+	<collision colState="sweeper" curState="create" reaction="toFallDown"></collision>
+	<collision colState="roundhouse" curState="create" reaction="toFallDown"></collision>
+	
+	<collision colState="toJumpPunch" curState="create" reaction="toFallDown"></collision>
+	<collision colState="jumpPunch" curState="create" reaction="toFallDown"></collision>
+	
+	<collision colState="toFlightPunch" curState="create" reaction="toFallDown"></collision>
+	<collision colState="flightPunch" curState="create" reaction="toFallDown"></collision>
+	
+	<collision colState="toJumpKick" curState="create" reaction="toFallDown"></collision>
+	<collision colState="jumpKick" curState="create" reaction="toFallDown"></collision>
+	
+	<collision colState="toFlightKick" curState="create" reaction="toFallDown"></collision>
+	<collision colState="flightKick" curState="create" reaction="toFallDown"></collision>
+	
+	<collision colState="duckPunch" curState="create" reaction="toFallDown"></collision>
+	<collision colState="duckKick" curState="create" reaction="toFallDown"></collision>
+	
+		
+</collisionhandler>

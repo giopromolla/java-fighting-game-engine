@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectile name="Kano Fireball" startState="create" version="1.0">
+	<state name="create" loop="false" nextState="flying" move="flying" damage="15">
+		<image src="/org/jfge/games/mk2/projectile/kanofireball/images/fireball_flying_1.png"/>
+	</state>
+	
+	<state name="flying" loop="true" nextState="impact" move="flying" damage="15">
+		<image src="/org/jfge/games/mk2/projectile/kanofireball/images/fireball_flying_1.png"/>
+		<image src="/org/jfge/games/mk2/projectile/kanofireball/images/fireball_flying_2.png"/>
+		<image src="/org/jfge/games/mk2/projectile/kanofireball/images/fireball_flying_3.png"/>
+		<image src="/org/jfge/games/mk2/projectile/kanofireball/images/fireball_flying_4.png"/>
+		<image src="/org/jfge/games/mk2/projectile/kanofireball/images/fireball_flying_5.png"/>
+		<image src="/org/jfge/games/mk2/projectile/kanofireball/images/fireball_flying_6.png"/>
+		<image src="/org/jfge/games/mk2/projectile/kanofireball/images/fireball_flying_7.png"/>
+		<image src="/org/jfge/games/mk2/projectile/kanofireball/images/fireball_flying_8.png"/>
+		<image src="/org/jfge/games/mk2/projectile/kanofireball/images/fireball_flying_9.png"/>
+	</state>
+	
+	<state name="impact" loop="false" nextState="finished">
+		<image src="/org/jfge/games/mk2/projectile/kanofireball/images/fireball_impact_1.png"/>
+		<image src="/org/jfge/games/mk2/projectile/kanofireball/images/fireball_impact_2.png"/>
+		<image src="/org/jfge/games/mk2/projectile/kanofireball/images/fireball_impact_3.png"/>
+		<image src="/org/jfge/games/mk2/projectile/kanofireball/images/fireball_impact_4.png"/>
+		<image src="/org/jfge/games/mk2/projectile/kanofireball/images/fireball_impact_5.png"/>
+		<image src="/org/jfge/games/mk2/projectile/kanofireball/images/fireball_impact_6.png"/>
+	</state>
+	
+	<state name="finished" loop="true" nextState="finished" finalState="true">
+		<image src="/org/jfge/games/mk2/projectile/kanofireball/images/fireball_impact_6.png"/>
+	</state>
+	
+</projectile>
