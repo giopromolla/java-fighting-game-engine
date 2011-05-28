@@ -23,7 +23,7 @@ public final class GameFactoryImpl implements GameFactory{
 	
 	private Map<String, Provider<Fighter>> fighters;
 	
-	private Set<Controller> availableControllers;
+	private Map<String, Controller> availableControllers;
 	
 	private CollisionDetector collisionDetector;
 	
@@ -36,7 +36,7 @@ public final class GameFactoryImpl implements GameFactory{
 	@Inject
 	public GameFactoryImpl(Provider<Engine> engineProvider, 
 			Map<String, Provider<Fighter>> fighters,
-			Set<Controller> availableControllers,
+			Map<String, Controller> availableControllers,
 			CollisionDetector collisionDetector,
 			Map<String,Provider<Scene>> scenes,
 			Map<String,Provider<Arena>> arenas,

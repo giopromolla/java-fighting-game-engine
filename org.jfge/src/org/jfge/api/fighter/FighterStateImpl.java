@@ -18,7 +18,7 @@ final class FighterStateImpl implements FighterState {
 	private List<Image> images;
 	
 	/** The fighter. */
-	private Fighter fighter;
+	private Fighter parent;
 	
 	/** The damage. */
 	private int damage;
@@ -100,13 +100,13 @@ final class FighterStateImpl implements FighterState {
 	 */
 	@Override
 	public void update() {
-		if(fighter == null)
+		if(parent == null)
 			return;
 		
 		// update sprite physics
 		if(physics == null) {
-			fighter.setDx(0);
-			fighter.setDy(0);
+			parent.setDx(0);
+			parent.setDy(0);
 		} else {
 			physics.update();
 		}
@@ -115,10 +115,10 @@ final class FighterStateImpl implements FighterState {
 		 * Setting the current sprite image, check if we have to flip the image. 
 		 * This is the case when the fighter is looking in Sprite.LEFT direction
 		 */
-		if(fighter.getDirection() == Fighter.RIGHT) {
-			fighter.setImage(this.images.get(this.curIndex));
-		} else if (fighter.getDirection() == Fighter.LEFT) {
-			fighter.setImage(this.images.get(this.curIndex).flip());
+		if(parent.getDirection() == Fighter.RIGHT) {
+			parent.setImage(this.images.get(this.curIndex));
+		} else if (parent.getDirection() == Fighter.LEFT) {
+			parent.setImage(this.images.get(this.curIndex).flip());
 		}
 		
 		//updating current image index and ticks
@@ -147,7 +147,7 @@ final class FighterStateImpl implements FighterState {
 	 */
 	@Override
 	public void setParent(Fighter sprite) {
-		this.fighter = sprite;
+		this.parent = sprite;
 		
 		if(this.physics != null) {
 			this.physics.setParent(sprite);	
@@ -171,7 +171,7 @@ final class FighterStateImpl implements FighterState {
 		String state = transitions.get(events);
 		
 		if(nextState != null)
-			this.fighter.setState(state);
+			this.parent.setState(state);
 	
 		return nextState != null;
 	}
@@ -207,7 +207,7 @@ final class FighterStateImpl implements FighterState {
 	 */
 	@Override
 	public boolean nextState() {
-		return this.fighter.setState(nextState);
+		return this.parent.setState(nextState);
 	}
 
 	/* (non-Javadoc)
@@ -218,7 +218,7 @@ final class FighterStateImpl implements FighterState {
 		String nextState = transitions.get(move);
 		
 		if(nextState != null) {
-			this.fighter.setState(nextState);
+			this.parent.setState(nextState);
 		}
 			
 		return nextState != null;
@@ -239,9 +239,9 @@ final class FighterStateImpl implements FighterState {
 	public Projectile getProjectile() {
 		if(this.projectile != null) {
 			Projectile projectile = this.projectile.create();
-			projectile.setX(fighter.getX());
-			projectile.setY((int) (fighter.getY()-fighter.getHeight()*.6));
-			projectile.setDirection(fighter.getDirection());
+			projectile.setX(parent.getX());
+			projectile.setY((int) (parent.getY()-parent.getHeight()*.6));
+			projectile.setDirection(parent.getDirection());
 			projectile.startState();
 			return projectile;
 		}
@@ -256,6 +256,10 @@ final class FighterStateImpl implements FighterState {
 	public boolean startState() {
 		this.curIndex = 0;
 		this.curTicks = 0;
+		
+		if(this.parent != null && this.physics != null) {
+			this.physics.init();
+		}
 		
 		return true;
 	}

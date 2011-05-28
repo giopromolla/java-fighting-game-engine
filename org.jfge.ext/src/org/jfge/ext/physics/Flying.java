@@ -10,9 +10,11 @@ import com.google.inject.name.Named;
 public class Flying implements SpritePhysics<Projectile> {
 
 	/** The sprite. */
-	private Projectile projectile;
+	private Projectile parent;
 	
 	private final int FLYING;
+	
+	private int direction;
 	
 	@Inject
 	public Flying(@Named("physics.projectile.flying") int flying) {
@@ -24,7 +26,7 @@ public class Flying implements SpritePhysics<Projectile> {
 	 */
 	@Override
 	public void setParent(Projectile sprite) {
-		this.projectile = sprite;
+		this.parent = sprite;
 	}
 
 	/* (non-Javadoc)
@@ -32,13 +34,21 @@ public class Flying implements SpritePhysics<Projectile> {
 	 */
 	@Override
 	public void update() {
-		if(projectile == null)
+		if(parent == null)
 			return;
 	
-		if(projectile.getDirection() == Sprite.RIGHT) {
-			projectile.setDx(FLYING);
-		} else if (projectile.getDirection() == Sprite.LEFT) {
-			projectile.setDx(-FLYING);
+		if(direction == Sprite.RIGHT) {
+			parent.setDx(FLYING);
+		} else if (direction == Sprite.LEFT) {
+			parent.setDx(-FLYING);
 		}
+	}
+
+	@Override
+	public void init() {
+		if(this.parent == null)
+			return;
+		
+		this.direction = parent.getDirection();
 	}
 }

@@ -31,7 +31,7 @@ final class ProjectileStateImpl implements ProjectileState {
 	private String nextState;
 	
 	/** The move. */
-	private SpritePhysics<Projectile> move;
+	private SpritePhysics<Projectile> physics;
 	
 	/** The parent. */
 	private Projectile parent;
@@ -81,7 +81,7 @@ final class ProjectileStateImpl implements ProjectileState {
 		this.loop = loop;
 		this.nextState = nextState;
 		this.isFinalState = isFinalState;
-		this.move = move;
+		this.physics = move;
 		this.damage = damage;
 	}
 	
@@ -108,8 +108,8 @@ final class ProjectileStateImpl implements ProjectileState {
 	public void setParent(Projectile sprite) {
 		this.parent = sprite;
 		
-		if(this.move != null) {
-			this.move.setParent(this.parent);	
+		if(this.physics != null) {
+			this.physics.setParent(this.parent);	
 		}
 	}
 
@@ -122,11 +122,11 @@ final class ProjectileStateImpl implements ProjectileState {
 			return;
 		
 		// update sprite physics
-		if(move == null) {
+		if(physics == null) {
 			parent.setDx(0);
 			parent.setDy(0);
 		} else {
-			move.update();
+			physics.update();
 		}
 		
 		/*
@@ -183,6 +183,10 @@ final class ProjectileStateImpl implements ProjectileState {
 		this.curIndex = 0;
 		this.curTicks = 0;
 	
+		if(this.parent != null && this.physics != null) {
+			this.physics.init();
+		}
+		
 		return true;
 	}
 

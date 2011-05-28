@@ -217,20 +217,20 @@ final class FighterImpl extends AbstractSprite implements Fighter {
 		/*
 		 * looking for needed state in our hashmap
 		 */
-		FighterState spriteState = states.get(state);
+		FighterState fighterState = states.get(state);
 		
-		if(spriteState != null) {
+		if(fighterState != null) {
 			// set found state to initial state
-			spriteState.startState();
+			fighterState.startState();
 			
-			CollisionEffect effect = spriteState.getCollisionEffect();
+			CollisionEffect effect = fighterState.getCollisionEffect();
 			if(effect != null) {
 				// found a collison effect in this state, add it for further processing
 				effect.setParent(this);
 				this.addCollisionEffect(effect);
 			}
 			
-			Projectile projectile = spriteState.getProjectile();
+			Projectile projectile = fighterState.getProjectile();
 			if(projectile != null) {
 				// found a projectile in this state, add it for further processing
 				this.addProjectile(projectile);
@@ -238,10 +238,10 @@ final class FighterImpl extends AbstractSprite implements Fighter {
 			}
 			
 			// setting found state to current state
-			this.curState = spriteState;
+			this.curState = fighterState;
 		}
 		
-		return spriteState != null;
+		return fighterState != null;
 	}
 	/* (non-Javadoc)
 	 * @see org.jfge.fighter.Fighter#handle(java.lang.String)

@@ -57,13 +57,14 @@ public final class J2SeGraphicsProvider implements org.jfge.spi.graphics.Graphic
      * Instantiates a new graphics provider impl.
      *
      * @param logger the logger
-     * @param controller the controller
+     * @param controller1 the controller
      * @param height the height
      * @param width the width
      */
     @Inject
     public  J2SeGraphicsProvider(Logger logger,
-    		@Named("keyboard.j2se") Controller controller, 
+    		@Named("keyboard.controller1") Controller controller1, 
+    		@Named("keyboard.controller2") Controller controller2, 
     		@Named("engine.height") int height,
     		@Named("engine.width") int width,  
     		@Named("engine.db") boolean dbEnabled) {        
@@ -89,7 +90,9 @@ public final class J2SeGraphicsProvider implements org.jfge.spi.graphics.Graphic
     	
     	// show frame
     	jFrame.setVisible(true);
-    	jFrame.addKeyListener((KeyListener) controller);
+    	jFrame.addKeyListener((KeyListener) controller1);
+    	jFrame.addKeyListener((KeyListener) controller2);
+    	
     	logger.info("graphics provider resolution:" + width +" x " + height);
     	logger.info("double buffering " + (dbEnabled ? "enabled" : "disabled"));
     	

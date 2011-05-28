@@ -13,9 +13,11 @@ import com.google.inject.name.Named;
 public final class MoveForward implements SpritePhysics<Fighter> {
 
 	/** The sprite. */
-	private Fighter fighter;
+	private Fighter parent;
 	
 	private final int WALK;
+	
+	private int direction;
 	
 	@Inject
 	public MoveForward(@Named("physics.fighter.walk") int walk) {
@@ -27,7 +29,7 @@ public final class MoveForward implements SpritePhysics<Fighter> {
 	 */
 	@Override
 	public void setParent(Fighter sprite) {
-		this.fighter = sprite;
+		this.parent = sprite;
 	}
 
 	/* (non-Javadoc)
@@ -35,13 +37,21 @@ public final class MoveForward implements SpritePhysics<Fighter> {
 	 */
 	@Override
 	public void update() {
-		if(fighter == null)
+		if(parent == null)
 			return;
 	
-		if(fighter.getDirection() == Sprite.RIGHT) {
-			fighter.setDx(WALK);
-		} else if (fighter.getDirection() == Sprite.LEFT) {
-			fighter.setDx(-WALK);
+		if(direction == Sprite.RIGHT) {
+			parent.setDx(WALK);
+		} else if (direction == Sprite.LEFT) {
+			parent.setDx(-WALK);
 		}
+	}
+
+	@Override
+	public void init() {
+		if(this.parent == null)
+			return;
+		
+		this.direction = parent.getDirection();
 	}
 }
