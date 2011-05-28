@@ -23,7 +23,7 @@ public class Fighting implements FightingState {
 	
 	private Game parent;
 	
-	private Set<Controller> availableControllers;
+	private Map<String, Controller> availableControllers;
 	
 	private CollisionDetector collisionDetector;
 	
@@ -39,7 +39,7 @@ public class Fighting implements FightingState {
 	
 	public Fighting(String name, 
 			String nextState,
-			Set<Controller> availableControllers,
+			Map<String, Controller> availableControllers,
 			CollisionDetector collisionDetector,
 			Map<String,Provider<Scene>> scenes,
 			AiControllerParser aiControllerParser) {
@@ -110,11 +110,13 @@ public class Fighting implements FightingState {
 		collisionDetector.addFighter(fighterLeft);
 		collisionDetector.addFighter(fighterRight);
 		
-		Controller controller = this.availableControllers.iterator().next();
+		Controller controller1 = availableControllers.get("keyboard.controller1");
+		Controller controller2 = availableControllers.get("keyboard.controller2");
 		
 		arena.setFighterLeft(fighterLeft);
 		arena.setFighterRight(fighterRight);
-		arena.setFighterLeftController(controller);
+		arena.setFighterLeftController(controller1);
+		arena.setFighterRightController(controller2);
 		
 		arena.startState();
 		

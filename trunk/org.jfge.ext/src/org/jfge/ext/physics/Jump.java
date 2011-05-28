@@ -18,7 +18,9 @@ public final class Jump implements SpritePhysics<Fighter> {
 	private final int VERTICAL;
 	
 	/** The sprite. */
-	private Fighter fighter;
+	private Fighter parent;
+	
+	private int direction;
 	
 	/**
 	 * Instantiates a new jump.
@@ -35,7 +37,7 @@ public final class Jump implements SpritePhysics<Fighter> {
 	 */
 	@Override
 	public void setParent(Fighter sprite) {
-		this.fighter = sprite;
+		this.parent = sprite;
 	}
 
 	/* (non-Javadoc)
@@ -43,25 +45,33 @@ public final class Jump implements SpritePhysics<Fighter> {
 	 */
 	@Override
 	public void update() {
-		if(fighter == null)
+		if(parent == null)
 			return;
 		
-		if(fighter.getDy() > 0) {
-			fighter.setDy(VERTICAL);
+		if(parent.getDy() > 0) {
+			parent.setDy(VERTICAL);
 		} else {
-			fighter.setDy(-VERTICAL);
+			parent.setDy(-VERTICAL);
 		}
 		
-		if(fighter.getY() - fighter.getHeight() < 0) {
-			fighter.setDy(VERTICAL);
+		if(parent.getY() - parent.getHeight() < 0) {
+			parent.setDy(VERTICAL);
 		}
 		
-		if(fighter.getY() > FLOOR) {
-			fighter.setDx(0);
-			fighter.setDy(0);
-			fighter.setY(FLOOR);
-			fighter.nextState();
+		if(parent.getY() > FLOOR) {
+			parent.setDx(0);
+			parent.setDy(0);
+			parent.setY(FLOOR);
+			parent.nextState();
 		}
+	}
+
+	@Override
+	public void init() {
+		if(this.parent == null)
+			return;
+		
+		this.direction = parent.getDirection();
 	}
 
 }

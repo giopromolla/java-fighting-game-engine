@@ -16,13 +16,15 @@ public final class JumpBackward implements SpritePhysics<Fighter>{
 	private static int FLOOR = 240;
 	
 	/** The sprite. */
-	private Fighter fighter;
+	private Fighter parent;
 	
 	/** The HORIZONTAL. */
 	private final int HORIZONTAL;
 	
 	/** The VERTICAL. */
 	private final int VERTICAL;
+	
+	private int direction;
 	
 	/**
 	 * Instantiates a new jump backward.
@@ -42,7 +44,7 @@ public final class JumpBackward implements SpritePhysics<Fighter>{
 	 */
 	@Override
 	public void setParent(Fighter sprite) {
-		this.fighter = sprite;
+		this.parent = sprite;
 	}
 
 	/* (non-Javadoc)
@@ -50,30 +52,38 @@ public final class JumpBackward implements SpritePhysics<Fighter>{
 	 */
 	@Override
 	public void update() {
-		if(fighter == null)
+		if(parent == null)
 			return;
 		
-		if(fighter.getDirection() == Sprite.RIGHT) {
-			fighter.setDx(-HORIZONTAL);
+		if(direction == Sprite.RIGHT) {
+			parent.setDx(-HORIZONTAL);
 		} else {
-			fighter.setDx(HORIZONTAL);
+			parent.setDx(HORIZONTAL);
 		}
 		
-		if(fighter.getDy() > 0) {
-			fighter.setDy(VERTICAL);
+		if(parent.getDy() > 0) {
+			parent.setDy(VERTICAL);
 		} else {
-			fighter.setDy(-VERTICAL);
+			parent.setDy(-VERTICAL);
 		}
 		
-		if(fighter.getY() - fighter.getHeight() < 0) {
-			fighter.setDy(VERTICAL);
+		if(parent.getY() - parent.getHeight() < 0) {
+			parent.setDy(VERTICAL);
 		}
 		
-		if(fighter.getY() + fighter.getDy()> FLOOR) {
-			fighter.setDx(0);
-			fighter.setDy(0);
-			fighter.setY(FLOOR);
-			fighter.nextState();
+		if(parent.getY() + parent.getDy()> FLOOR) {
+			parent.setDx(0);
+			parent.setDy(0);
+			parent.setY(FLOOR);
+			parent.nextState();
 		}
+	}
+
+	@Override
+	public void init() {
+		if(this.parent == null)
+			return;
+		
+		this.direction = parent.getDirection();
 	}
 }
