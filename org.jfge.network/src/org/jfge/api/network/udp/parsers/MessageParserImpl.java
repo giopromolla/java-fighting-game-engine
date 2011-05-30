@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.jfge.api.misc.ByteOperations;
+import org.jfge.api.network.MessageParser;
 import org.jfge.api.network.udp.messages.NetworkMessage;
 
 import com.google.inject.Singleton;
