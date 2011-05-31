@@ -7,19 +7,16 @@ import org.jfge.api.misc.ByteOperations;
 import org.jfge.api.network.MessageParser;
 import org.jfge.api.network.udp.messages.NetworkMessage;
 
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 @Singleton
 public class MessageParserImpl implements MessageParser {
 	private Map<Integer, TypeParser> parsers = new HashMap<Integer, TypeParser>();
 	
-	public MessageParserImpl() {
-		
-	}
-	
-	@Override
-	public void registerTypeParser(TypeParser parser) {
-		parsers.put(parser.getType(), parser);
+	@Inject
+	public MessageParserImpl(Map<Integer, TypeParser> parsers) {
+		this.parsers = parsers;
 	}
 	
 	@Override

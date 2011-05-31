@@ -14,7 +14,9 @@ import org.jfge.api.game.GameFactory;
 import org.jfge.api.game.GameState;
 import org.jfge.api.network.AsyncReceiver;
 import org.jfge.api.network.Connection;
+import org.jfge.api.network.EventBuffer;
 import org.jfge.api.network.MessageParser;
+import org.jfge.api.network.MessageSender;
 import org.jfge.spi.controller.Controller;
 import org.jfge.spi.scene.Scene;
 
@@ -44,6 +46,10 @@ public final class GameFactoryImpl implements GameFactory{
 	private MessageParser parser;
 
 	private Connection connection;
+
+	private MessageSender sender;
+
+	private EventBuffer buffer;
 	
 	@Inject
 	public GameFactoryImpl(Provider<Engine> engineProvider, 
@@ -55,7 +61,9 @@ public final class GameFactoryImpl implements GameFactory{
 			AiControllerParser aiControllerParser,
 			AsyncReceiver receiver,
 			MessageParser parser,
-			Connection connection) {
+			Connection connection,
+			MessageSender sender,
+			EventBuffer buffer) {
 		this.engineProvider = engineProvider;
 		
 		this.fighters = fighters;
@@ -68,6 +76,8 @@ public final class GameFactoryImpl implements GameFactory{
 		this.receiver = receiver;
 		this.connection = connection;
 		this.parser = parser;
+		this.sender = sender;
+		this.buffer = buffer;
 	}
 	
 	@Override
@@ -78,7 +88,7 @@ public final class GameFactoryImpl implements GameFactory{
 
 	@Override
 	public FightingState createFightingState(String name, String nextState) {
-		return new NetworkGameStateFightingImpl(nextState, nextState, availableControllers, collisionDetector, scenes, aiControllerParser, receiver, parser, connection);
+		return new NetworkGameStateFightingImpl(nextState, nextState, availableControllers, collisionDetector, scenes, aiControllerParser, receiver, parser, connection, sender, buffer);
 	}
 
 }

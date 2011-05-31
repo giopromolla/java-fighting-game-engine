@@ -5,6 +5,7 @@ import java.util.Stack;
 import org.jfge.api.network.AsyncReceiver;
 import org.jfge.api.network.Connection;
 
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 @Singleton
@@ -13,8 +14,11 @@ public class AsyncReceiverImpl extends Thread implements AsyncReceiver {
 	private Object waiter = new Object();
 	private Stack<byte[]> byteStack = new Stack<byte[]>();
 
-	public AsyncReceiverImpl() {
+	
+	@Inject
+	public AsyncReceiverImpl(Connection con) {
 		this.start();
+		this.con = con;
 	}
 
 	public void run() {
@@ -29,10 +33,10 @@ public class AsyncReceiverImpl extends Thread implements AsyncReceiver {
 	}
 	
 	private void waitForConnection() {
-		while (this.con == null) {
+		while (this.con == null || !this.con.isConnected()) {
 			try {
 				synchronized (waiter) {
-					waiter.wait();
+					waiter.wait(500);
 				}
 			} catch (InterruptedException e) { }
 		}
