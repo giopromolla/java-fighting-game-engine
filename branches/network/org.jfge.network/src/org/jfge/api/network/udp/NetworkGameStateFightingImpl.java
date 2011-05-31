@@ -13,7 +13,9 @@ import org.jfge.api.game.Game;
 import org.jfge.api.network.AsyncReceiver;
 import org.jfge.api.network.Connection;
 import org.jfge.api.network.ConnectionFactory;
+import org.jfge.api.network.EventBuffer;
 import org.jfge.api.network.MessageParser;
+import org.jfge.api.network.MessageSender;
 import org.jfge.api.network.NetworkGameState;
 import org.jfge.api.network.StateMachineEventAdapter;
 import org.jfge.api.network.StateMachineEventListener;
@@ -25,6 +27,8 @@ import org.jfge.api.network.udp.messages.SequenceResetMessage;
 import org.jfge.spi.controller.Controller;
 import org.jfge.spi.graphics.Graphics;
 import org.jfge.spi.scene.Scene;
+
+import sun.security.action.GetLongAction;
 
 import com.google.inject.Provider;
 
@@ -57,6 +61,10 @@ public class NetworkGameStateFightingImpl implements NetworkGameState, FightingS
 	private AsyncReceiver receiver;
 
 	private MessageParser parser;
+
+	private MessageSender sender;
+
+	private EventBuffer buffer;
 	
 	public NetworkGameStateFightingImpl(String name, 
 			String nextState,
@@ -66,8 +74,11 @@ public class NetworkGameStateFightingImpl implements NetworkGameState, FightingS
 			AiControllerParser aiControllerParser,
 			AsyncReceiver receiver,
 			MessageParser parser,
-			Connection connection
+			Connection connection,
+			MessageSender sender,
+			EventBuffer buffer
 			) {
+		this.cnt = 0;
 		
 		this.name = name;
 		this.nextState = nextState;
@@ -79,6 +90,8 @@ public class NetworkGameStateFightingImpl implements NetworkGameState, FightingS
 		this.receiver = receiver;
 		this.connection = connection;
 		this.parser = parser;
+		this.sender = sender;
+		this.buffer = buffer;
 	}
 	
 	@Override
@@ -153,10 +166,11 @@ public class NetworkGameStateFightingImpl implements NetworkGameState, FightingS
 			}
 		});
 		
+		wrappedController.addStateMachineEventListener(buffer);
+		
 		arena.setFighterLeft(fighterLeft);
 		arena.setFighterRight(fighterRight);
-		arena.setFighterLeftController(wrappedController);
-		
+		arena.setFighterLeftController(wrappedController); 
 		arena.startState(); 
 		
 		parent.getEngine().removeRenderable(loadingScene);
@@ -171,26 +185,36 @@ public class NetworkGameStateFightingImpl implements NetworkGameState, FightingS
 	@Override
 	public void update() {
 		cnt++;
-		handleReceivedPackages();
-		
+		handleReceivedPackages();		
 		fighterLeft.update();
 		fighterRight.update();
 		collisionDetector.update();
 		arena.update();
+		sender.sendActionMessage(cnt);
 	}
 
 	private void handleReceivedPackages() {		
 		byte[] result = this.receiver.popMessage();
 		while (result != null) {
 			NetworkMessage message = parser.parseMessage(result);
-			switch(message.type) {
-				case AcknowledgeMessage.TYPE:					
-					break;
-				case SequenceResetMessage.TYPE:
-					break;
-				case ActionMessage.TYPE:
-					
-					break;
+			
+			if(message!=null) {
+				switch(message.type) {
+					case AcknowledgeMessage.TYPE:					
+						break;
+					case SequenceResetMessage.TYPE:
+						break;
+					case ActionMessage.TYPE:
+						ActionMessage am = (ActionMessage)message;
+						//TODO: Don't inject all messages, only the ones that are currently needed
+						sender.sendAcknowledgeMessage(am.seqNmbr);
+						for(Integer k : am.actions.keySet()) {
+							for (String act : am.actions.get(k)) {
+								System.out.println("Received: "+act);
+							}
+						}
+						break;
+				}
 			}
 			result = this.receiver.popMessage();
 		}

@@ -1,6 +1,5 @@
 package org.jfge.api.network.udp;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,6 +8,9 @@ import java.util.Map;
 import org.jfge.api.network.EventBuffer;
 import org.jfge.api.network.udp.messages.ActionMessage;
 
+import com.google.inject.Singleton;
+
+@Singleton
 public class EventBufferImpl implements EventBuffer{
 	private ActionMessage msg = new ActionMessage(); 
 	
@@ -41,16 +43,50 @@ public class EventBufferImpl implements EventBuffer{
 	}
 
 	@Override
-	public void updateCnt(int newCnt) {		
+	public void updateCnt(int newCnt) {
+		Map<Integer, List<String>> newEvents = new HashMap<Integer, List<String>>();
 		for(int cnt : cntToEvents.keySet()) {
-			//TODO: Go ahead here
+			if (cnt >= newCnt) {
+				newEvents.put(cnt, cntToEvents.get(cnt));
+			}
 		}
+		cntToEvents = newEvents;
 	}
 
 	@Override
-	public ActionMessage generateEvent() {
+	public ActionMessage generateEvent(int cnt) {
+		msg.actions = new HashMap<Integer, List<String>>();
+		for (Integer i : cntToEvents.keySet()) {
+			List<String> actions = cntToEvents.get(i);
+			if (actions != null && i <= cnt) {
+				msg.actions.put(i, actions);
+			}
+		}
+		msg.seqNmbr = cnt;
+		return msg;
+	}
+
+	@Override
+	public void handle(String event) {
+		this.addEvent(event);
+	}
+
+	@Override
+	public void setState(String state) {
 		// TODO Auto-generated method stub
-		return null;
+		
+	}
+
+	@Override
+	public void nextState() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void startState() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
