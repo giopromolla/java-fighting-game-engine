@@ -15,11 +15,11 @@ public abstract class NetworkMessage {
 	}
 	
 	public byte[] serialize() {		
-		ByteArrayOutputStream bos = new ByteArrayOutputStream(512);
+		ByteArrayOutputStream bos = new ByteArrayOutputStream(1024);
 		try {
 			bos.write(ByteOperations.intToByteArray(type));
 			bos.write(ByteOperations.intToByteArray(seqNmbr));
-			bos.write(ByteOperations.intToByteArray(ackSeqNmbr));			
+			bos.write(ByteOperations.intToByteArray(ackSeqNmbr));
 		} catch (IOException e) {		
 			e.printStackTrace();
 		}

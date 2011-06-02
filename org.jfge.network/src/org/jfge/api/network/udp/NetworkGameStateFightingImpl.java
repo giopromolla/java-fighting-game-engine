@@ -1,5 +1,8 @@
 package org.jfge.api.network.udp;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.Set;
 
@@ -65,6 +68,8 @@ public class NetworkGameStateFightingImpl implements NetworkGameState, FightingS
 	private MessageSender sender;
 
 	private EventBuffer buffer;
+
+	private boolean left;
 	
 	public NetworkGameStateFightingImpl(String name, 
 			String nextState,
@@ -158,19 +163,25 @@ public class NetworkGameStateFightingImpl implements NetworkGameState, FightingS
 		
 		String controllerName = this.availableControllers.keySet().iterator().next();
 		Controller controller = this.availableControllers.get(controllerName);
-		WrappingController wrappedController = new WrappingController(controller);
-		wrappedController.addStateMachineEventListener(new StateMachineEventAdapter() { 
-			@Override
-			public void handle(String event) {
-				System.out.println("Sama dabei");
-			}
-		});
-		
+		WrappingController wrappedController = new WrappingController(controller); 
 		wrappedController.addStateMachineEventListener(buffer);
 		
 		arena.setFighterLeft(fighterLeft);
 		arena.setFighterRight(fighterRight);
-		arena.setFighterLeftController(wrappedController); 
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("(l)eft or (r)ight?");
+		
+		try {
+			this.left = br.readLine().equals("l");
+			if (left)
+				arena.setFighterLeftController(wrappedController);
+			else
+				arena.setFighterRightController(wrappedController);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+			
 		arena.startState(); 
 		
 		parent.getEngine().removeRenderable(loadingScene);
@@ -208,10 +219,19 @@ public class NetworkGameStateFightingImpl implements NetworkGameState, FightingS
 						ActionMessage am = (ActionMessage)message;
 						//TODO: Don't inject all messages, only the ones that are currently needed
 						sender.sendAcknowledgeMessage(am.seqNmbr);
+						Fighter other = left ? arena.getFighterRight() : arena.getFighterLeft();
+						Integer prevNmbr = null;
 						for(Integer k : am.actions.keySet()) {
-							for (String act : am.actions.get(k)) {
-								System.out.println("Received: "+act);
+							while(prevNmbr != null && prevNmbr < k) {
+								other.update();
 							}
+							for (String act : am.actions.get(k)) {															
+								other.handle(act);								
+							}
+							prevNmbr = k;
+						}						
+						while(this.cnt < am.seqNmbr) {
+							update();
 						}
 						break;
 				}

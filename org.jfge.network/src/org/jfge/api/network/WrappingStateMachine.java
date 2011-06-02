@@ -25,7 +25,10 @@ public class WrappingStateMachine implements StateMachine {
 			System.out.println(event);
 			this.fireHandleInvoked(event);
 		}
-		return machine.handle(event);
+		if (machine != null) {
+			return machine.handle(event);
+		}
+		return false;
 	}
 
 	@Override
