@@ -1,5 +1,6 @@
 package org.jfge.api.network.udp;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,10 +15,10 @@ import com.google.inject.Singleton;
 public class EventBufferImpl implements EventBuffer{
 	private ActionMessage msg = new ActionMessage(); 
 	
-	private Map<Integer, List<String>> cntToEvents = new HashMap<Integer, List<String>>();
+	private Map<Integer, List<String>> cntToEvents = Collections.synchronizedMap(new HashMap<Integer, List<String>>());
 	
 	@Override
-	public void addEvent(String event) { 
+	public void addEvent(String event) { 		
 		List<String> events = cntToEvents.get(0);
 		if (events == null) {
 			events = new LinkedList<String>();
@@ -66,9 +67,14 @@ public class EventBufferImpl implements EventBuffer{
 		return msg;
 	}
 
+	private String previous = new String();
+	
 	@Override
 	public void handle(String event) {
-		this.addEvent(event);
+		if(!previous.equals(event)) {
+			previous = event;
+			this.addEvent(event);
+		}			
 	}
 
 	@Override
