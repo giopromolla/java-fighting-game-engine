@@ -21,7 +21,7 @@ You need to find a proper location to take videos for your own fighting characte
 
 = Camera position and floor marks =
 
-= Fighting Character states =
+= Fighting character states =
 
 After setting up your camera environment you can start creating your own character sprites. Often fighters stick to a predefined fighting style, e.g. Street Fighter 2 or Mortal Kombat etc.
 
